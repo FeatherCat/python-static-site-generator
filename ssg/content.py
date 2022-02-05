@@ -23,10 +23,7 @@ class Content(Mapping):
 
     @property
     def type(self):
-        if self.data["type"] is not None:
-            return self.data["type"]
-        else:
-            return None
+        return self.data["type"] if "type" in self.data else None
 
     @type.setter
     def type(self, type):
