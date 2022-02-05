@@ -23,7 +23,10 @@ class Content(Mapping):
 
     @property
     def type(self):
-        return self.data["type"]
+        if self.data["type"]:
+            return self.data["type"]
+        else:
+            return None
 
     @type.setter
     def type(self, type):
