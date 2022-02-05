@@ -5,7 +5,7 @@ class Site:
     def __init__(self, source, dest, parsers=None):
         self.source = Path(source)
         self.dest = Path(dest)
-        parsers = parsers or []
+        self.parsers = parsers or []
 
     def create_dir(self, path):
         directory = self.dest/Path.relative_to(self.source)
@@ -21,7 +21,7 @@ class Site:
 
     def load_parser(self, extension):
         for parser in self.parsers:
-            if Parser.valid_extension(parser):
+            if Parser.valid_extension(extension):
                 return parser
 
     def run_parser(self, path):

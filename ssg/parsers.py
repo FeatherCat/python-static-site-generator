@@ -12,16 +12,16 @@ class Parser:
         raise NotImplementedError
 
     def read(self, path):
-        with open(path) as file:
+        with open(path, 'r') as file:
             return file.read()
 
     def write(self, path, dest, content, ext=".html"):
-        full_path = self.dest/Path.with_suffix(ext).name
-        with open(full_path) as file:
+        full_path = dest / Path.with_suffix(ext).name
+        with open(full_path, 'w') as file:
             file.write(content)
 
     def copy(self, path, source, dest):
-        shutil.copy2(path, dest/Path.relative_to(source))
+        shutil.copy2(path, dest / Path.relative_to(source))
 
 class ResourceParser(Parser):
     extensions = [".jpg", ".png", ".gif", ".css", ".html"]
